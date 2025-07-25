@@ -73,6 +73,17 @@ interface WithUserProps {
 
 export function WithUser({ children }: WithUserProps) {
   const { user, loading, error } = useUser()
+  const router = useRouter()
+
+  useEffect(() => {
+    console.log('🔐 WITH USER STATE:', { user: user?.id, loading, error: error?.message })
+    
+    // Se não está carregando e não tem usuário, redireciona para login
+    if (!loading && !user) {
+      console.log('🚪 REDIRECIONANDO PARA LOGIN (WithUser)')
+      router.push('/auth/login')
+    }
+  }, [user, loading, error, router])
 
   if (loading) {
     return (
@@ -91,6 +102,12 @@ export function WithUser({ children }: WithUserProps) {
         <div className="text-center">
           <div className="text-red-500 mb-4">❌ Erro de autenticação</div>
           <p className="text-gray-600 dark:text-gray-300">{error?.message || 'Usuário não encontrado'}</p>
+          <button 
+            onClick={() => router.push('/auth/login')}
+            className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mt-4"
+          >
+            Ir para Login
+          </button>
         </div>
       </div>
     )
