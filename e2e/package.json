@@ -1,0 +1,46 @@
+{
+  "name": "supabase-dashboard-e2e-tests",
+  "version": "1.0.0",
+  "description": "End-to-end tests for Supabase Dashboard Application",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "test:chromium": "playwright test --project=chromium",
+    "test:firefox": "playwright test --project=firefox",
+    "test:webkit": "playwright test --project=webkit",
+    "test:mobile": "playwright test --project=mobile-chrome --project=mobile-safari",
+    "test:auth": "playwright test tests/01-authentication.spec.ts",
+    "test:profile": "playwright test tests/02-profile.spec.ts",
+    "test:finance": "playwright test tests/03-finance.spec.ts",
+    "test:health": "playwright test tests/04-health.spec.ts",
+    "test:studies": "playwright test tests/12-studies.spec.ts",
+    "test:smoke": "playwright test --grep='@smoke'",
+    "test:critical": "playwright test --grep='@critical'",
+    "install": "playwright install",
+    "install-deps": "playwright install-deps",
+    "report": "playwright show-report",
+    "trace": "playwright show-trace"
+  },
+  "keywords": [
+    "e2e",
+    "testing",
+    "playwright",
+    "supabase",
+    "dashboard",
+    "adhd",
+    "neurodivergent"
+  ],
+  "author": "Terragon Labs",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.8.0",
+    "dotenv": "^16.3.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
